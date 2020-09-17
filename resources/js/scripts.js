@@ -27,18 +27,56 @@ for (let i=0; i<data.length; ++i) {
 
     itemsContainer.appendChild(newDiv)
   }
-  
+// Cart Array
   const cart = []
-
+  
+// Add Items
   function addItem(name, price) {
-    const item = {name:name, price: price, qty: 1}
+    for (let i = 0; i < cart.length; i += 1) {
+      if (cart[i].name === name) {
+        cart[i].qty += 1
+        return
+      }
+    }
+
+    const item = {name, price, qty: 1}
     cart.push(item)
   }
-  function showItem() {
-    console.log(cart[0])
+
+// Show Items
+  function showItems() {
+    const qty = getQty()
+    console.log(`You have ${qty} items`)
+
+    for (let i = 0; i < cart.length; i += 1) {
+      console.log(`- ${cart[i].name} ${cart[i].price} x ${cart[i].qty} `)
+    }
+    const total = getTotal()
+    console.log(`Total in cart: ${total}`)
+    
+  }
+// Get Qty
+  function getQty() {
+    let qty = 0
+    for (let i = 0; i < cart.length; i += 1) {
+      qty += cart[i].qty
+    }
+    return qty
   }
 
+  // Get Total
+  function getTotal() {
+    let total = 0
+    for (let i = 0; i < cart.length; i +=1) {
+      total += cart[i].price * cart[i].qty
+    }
+    return total.toFixed(2)
+  }
+
+// Items
   addItem('Apple', 0.99)
   addItem('Orange', 1.29)
+  addItem('Apple', 0.99)
+  addItem('Opinion', 0.02)
 
-  showItem()
+  showItems()
