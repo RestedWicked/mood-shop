@@ -27,6 +27,11 @@ for (let i=0; i<data.length; ++i) {
 
     itemsContainer.appendChild(newDiv)
   }
+// Shopping Cart
+const itemList = document.getElementById('item-list')
+const cartQty = document.getElementById('cart-qty')
+const cartTotal = document.getElementById('cart-total')
+
 // Cart Array
   const cart = []
   
@@ -46,13 +51,24 @@ for (let i=0; i<data.length; ++i) {
 // Show Items
   function showItems() {
     const qty = getQty()
-    console.log(`You have ${qty} items`)
+    cartQty.innerHTML = `You have ${qty} items`
 
+    let itemStr = ''
     for (let i = 0; i < cart.length; i += 1) {
-      console.log(`- ${cart[i].name} ${cart[i].price} x ${cart[i].qty} `)
+      //console.log(`- ${cart[i].name} ${cart[i].price} x ${cart[i].qty} `)
+      // { name;'Apple', price: 0.99, qty: 3 }
+      const {name, price, qty } = cart[i]
+
+      itemStr += `<li>
+        ${name} 
+        ${price} x ${qty} = 
+        ${qty * price} 
+      </li>`
     }
+    itemList.innerHTML = itemStr
+
     const total = getTotal()
-    console.log(`Total in cart: ${total}`)
+    cartTotal.innerHTML = `Total in cart: ${total}`
     
   }
 // Get Qty
@@ -93,6 +109,7 @@ for (let i=0; i<data.length; ++i) {
   addItem('Orange', 1.29)
   addItem('Apple', 0.99)
   addItem('Opinion', 0.02)
+  addItem('Apple', 0.99)
 
   showItems()
   
