@@ -32,6 +32,13 @@ const itemList = document.getElementById('item-list')
 const cartQty = document.getElementById('cart-qty')
 const cartTotal = document.getElementById('cart-total')
 
+// Button
+const all_items_button = Array.from(document.querySelectorAll("button"))
+all_items_button.forEach(elt => elt.addEventListener('click', () => {
+  addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+  showItems()
+}))
+
 // Cart Array
   const cart = []
   
@@ -105,15 +112,15 @@ const cartTotal = document.getElementById('cart-total')
   }
 
 // Items
-  addItem('Apple', 0.99)
-  addItem('Orange', 1.29)
-  addItem('Apple', 0.99)
-  addItem('Opinion', 0.02)
-  addItem('Apple', 0.99)
+  // addItem('Apple', 0.99)
+  // addItem('Orange', 1.29)
+  // addItem('Apple', 0.99)
+  // addItem('Opinion', 0.02)
+  // addItem('Apple', 0.99)
 
-  showItems()
+  // showItems()
   
-  removeItem('Apple', 1)
-  removeItem('Orange')
+  // removeItem('Apple', 1)
+  // removeItem('Orange')
   
-  showItems()
+  // showItems()
