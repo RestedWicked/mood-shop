@@ -32,5 +32,24 @@ body{
     border: solid 1px;
     width: 300px;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
   }
-  
+.item p:nth-child(3) {
+    margin-top: auto;
+}
+.item button {
+  background-color: transparent;
+  padding: 1em;
+}
+#cart #item-list {
+  list-style-type: none;
+}  
+#cart #item-list button, #cart #item-list input {
+  background-color: transparent;
+}
+#cart #cart-qty {
+  font-weight: bolder;
+}
